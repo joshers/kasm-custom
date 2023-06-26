@@ -12,6 +12,11 @@ RUN curl -fsSL https://pkgs.tailscale.com/stable/debian/bullseye.noarmor.gpg | t
     && curl -fsSL https://pkgs.tailscale.com/stable/debian/bullseye.tailscale-keyring.list | tee /etc/apt/sources.list.d/tailscale.list \
     && apt update \
     && apt install -y tailscale firefox-esr
+    
+RUN apt update \
+    && apt install -y sudo \
+    && echo 'kasm-user ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
+    && rm -rf /var/lib/apt/list/*
 
 ######### End Customizations ###########
 
