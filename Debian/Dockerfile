@@ -8,12 +8,12 @@ WORKDIR $HOME
 
 ######### Customize Container Here ###########
 
-### Install Tailscale and Firefox-ESR ###
+### Install Tailscale, Firefox-ESR, VLC, Ping ###
 
 RUN curl -fsSL https://pkgs.tailscale.com/stable/debian/bullseye.noarmor.gpg | tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null \
     && curl -fsSL https://pkgs.tailscale.com/stable/debian/bullseye.tailscale-keyring.list | tee /etc/apt/sources.list.d/tailscale.list \
     && apt update \
-    && apt install -y tailscale firefox-esr iputils-ping \
+    && apt install -y tailscale firefox-esr iputils-ping vlc \
     && cp /usr/share/applications/firefox-esr.desktop $HOME/Desktop/ \
     && chmod +x $HOME/Desktop/firefox-esr.desktop \
     && chown 1000:1000 $HOME/Desktop/firefox-esr.desktop
