@@ -37,8 +37,7 @@ RUN apt install -y wget gpg \
 
 RUN wget -qO /tmp/pycharm.tar.gz https://download.jetbrains.com/python/pycharm-professional-2023.1.3.tar.gz \
     && cd /tmp \
-    && tar xzf pycharm.tar.gz -C /opt/ \
-    && cd /opt/pycharm-2023.1.1/bin
+    && tar xzf pycharm.tar.gz -C /opt/
     
 ### Install sudo and add default user to sudo ###
     
