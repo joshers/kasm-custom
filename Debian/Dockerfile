@@ -13,7 +13,7 @@ WORKDIR $HOME
 RUN curl -fsSL https://pkgs.tailscale.com/stable/debian/bullseye.noarmor.gpg | tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null \
     && curl -fsSL https://pkgs.tailscale.com/stable/debian/bullseye.tailscale-keyring.list | tee /etc/apt/sources.list.d/tailscale.list \
     && apt update \
-    && apt install -y tailscale firefox-esr iputils-ping vlc \
+    && apt install -y tailscale firefox-esr iputils-ping vlc openjdk-17-jre \
     && cp /usr/share/applications/firefox-esr.desktop $HOME/Desktop/ \
     && chmod +x $HOME/Desktop/firefox-esr.desktop \
     && chown 1000:1000 $HOME/Desktop/firefox-esr.desktop
@@ -32,6 +32,13 @@ RUN apt install -y wget gpg \
     && cp /usr/share/applications/code.desktop $HOME/Desktop/ \
     && chmod +x $HOME/Desktop/code.desktop \
     && chown 1000:1000 $HOME/Desktop/code.desktop
+    
+### Install Pycharm ###
+
+RUN wget -qO /tmp/pycharm.tar.gz https://download.jetbrains.com/python/pycharm-professional-2023.1.3.tar.gz \
+    && cd /tmp \
+    && tar xzf pycharm.tar.gz -C /opt/ \
+    && cd /opt/pycharm-2023.1.1/bin
     
 ### Install sudo and add default user to sudo ###
     
