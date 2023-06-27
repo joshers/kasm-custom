@@ -27,7 +27,10 @@ RUN apt install -y wget gpg \
     && rm -f packages.microsoft.gpg \
     && apt install -y apt-transport-https \
     && apt update \
-    && apt install -y code
+    && apt install -y code \
+    && cp /usr/share/applications/code.desktop $HOME/Desktop/ \
+    && chmod +x $HOME/Desktop/code.desktop \
+    && chown 1000:1000 $HOME/Desktop/code.desktop
     
 ### Install sudo and add default user to sudo ###
     
