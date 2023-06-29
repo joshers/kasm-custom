@@ -55,6 +55,8 @@ RUN apt update \
 ### Cleanup ###
 RUN apt autoclean \
     && rm -rf /config/.cache /var/lib/apt/lists/* /var/tmp/* /tmp/*
+    
+ENV START_XFCE4=0
 
 ######### End Customizations ###########
 
