@@ -12,7 +12,7 @@ WORKDIR $HOME
 
 RUN apt update \
     && apt purge -y xfce* \
-    && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends chromium lightdm kde-plasma-desktop
+    && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends chromium kwin-x11 plasma-desktop plasma-workspace
 
 ### Install Tailscale, Firefox-ESR, VLC, Ping ###
 
