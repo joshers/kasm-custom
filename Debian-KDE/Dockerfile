@@ -11,7 +11,7 @@ WORKDIR $HOME
 ### Install KDE Plasma ###
 
 RUN apt update \
-    && apt purge xfce* \
+    && apt purge -y xfce* \
     && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends chromium konsole plasma-desktop plasma-workspace systemsettings
 
 ### Install Tailscale, Firefox-ESR, VLC, Ping ###
