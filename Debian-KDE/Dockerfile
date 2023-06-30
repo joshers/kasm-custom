@@ -29,7 +29,6 @@ RUN apt update \
 RUN apt autoclean \
     && rm -rf /config/.cache /var/lib/apt/lists/* /var/tmp/* /tmp/*
     
-ENV START_XFCE4=0
 
 ######### End Customizations ###########
 
@@ -40,8 +39,7 @@ ENV HOME /home/kasm-user
 WORKDIR $HOME
 RUN mkdir -p $HOME && chown -R 1000:0 $HOME
 
-RUN rm $HOME/.vnc/xstartup \
-    && mkdir $HOME/.vnc \
+RUN mkdir $HOME/.vnc \
     && echo "#!/bin/sh" > $HOME/.vnc/xstartup \
     && echo "/usr/bin/startplasma-x11 &" >> $HOME/.vnc/xstartup \
     && chmod +x $HOME/.vnc/xstartup
