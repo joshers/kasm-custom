@@ -12,12 +12,7 @@ WORKDIR $HOME
 
 RUN apt update \
     && apt purge -y xfce* lightdm \
-    && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends chromium sddm plasma-desktop plasma-workspace \
-    # && rm $HOME/.vnc/xstartup \
-    && mkdir $HOME/.vnc \
-    && echo "#!/bin/sh" > $HOME/.vnc/xstartup \
-    && echo "/usr/bin/startplasma-x11 &" >> $HOME/.vnc/xstartup \
-    && chmod +x $HOME/.vnc/xstartup
+    && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends chromium sddm plasma-desktop plasma-workspace 
 
 ### Install Tailscale, Firefox-ESR, VLC, Ping ###
 
@@ -44,5 +39,11 @@ RUN $STARTUPDIR/set_user_permission.sh $HOME
 ENV HOME /home/kasm-user
 WORKDIR $HOME
 RUN mkdir -p $HOME && chown -R 1000:0 $HOME
+
+RUN rm $HOME/.vnc/xstartup \
+    && mkdir $HOME/.vnc \
+    && echo "#!/bin/sh" > $HOME/.vnc/xstartup \
+    && echo "/usr/bin/startplasma-x11 &" >> $HOME/.vnc/xstartup \
+    && chmod +x $HOME/.vnc/xstartup
 
 USER 1000
