@@ -12,7 +12,10 @@ WORKDIR $HOME
 
 RUN apt update \
     && apt purge -y xfce* lightdm \
-    && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends chromium sddm plasma-desktop plasma-workspace
+    && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends chromium sddm plasma-desktop plasma-workspace \
+    && rm $HOME/.vnc/xstartup \
+    && echo "exec startkde" > $HOME/.vnc/xstartup \
+    && chmod +x $HOME/.vnc/xstartup
 
 ### Install Tailscale, Firefox-ESR, VLC, Ping ###
 
