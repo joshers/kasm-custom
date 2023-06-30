@@ -15,7 +15,8 @@ RUN apt update \
     && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends chromium sddm plasma-desktop plasma-workspace \
     # && rm $HOME/.vnc/xstartup \
     && mkdir $HOME/.vnc \
-    && echo "/usr/bin/startplasma-x11 > /dev/null 2>&1" > $HOME/.vnc/xstartup \
+    && echo "#!/bin/sh" > $HOME/.vnc/xstartup \
+    && echo "/usr/bin/startplasma-x11 &" >> $HOME/.vnc/xstartup \
     && chmod +x $HOME/.vnc/xstartup
 
 ### Install Tailscale, Firefox-ESR, VLC, Ping ###
